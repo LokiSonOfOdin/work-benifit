@@ -13,7 +13,7 @@ $footerBackground: #DDDDDD;
 
 %defultFontTitle {
     font-family: "Roboto", sans-serif;
-    @include addaptive-value(font-size, 32, 26, 1);
+    @include addaptive-value(font-size, 32, 22, 1);
     font-style: normal;
     font-weight: 700;
     line-height: 138.889%;
