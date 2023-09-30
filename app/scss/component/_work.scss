@@ -30,4 +30,10 @@
         gap: 1rem;
         flex-wrap: wrap;
     }
+
+    &__card-ul {
+        display: flex;
+        flex-direction: column;
+        list-style: upper-roman;
+    }
 }
