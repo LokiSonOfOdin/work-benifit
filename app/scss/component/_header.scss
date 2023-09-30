@@ -1,0 +1,36 @@
+.header {
+    &__wrap {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        margin: auto;
+        align-items: center;
+        @media (max-width: 768px) {
+            flex-wrap: wrap-reverse;
+            justify-content: center;
+            gap: 2rem;
+        }
+    }
+    &__title {
+        @include addaptive-value(font-size, 36, 28, 1);
+    }
+    &__inner {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: .5rem;
+    }
+
+    &__link {
+        @include addaptive-value(font-size, 24, 18, 1);
+        position: relative;
+        padding: .5rem 1rem;
+        
+    }
+
+    &__logo {
+        max-width: 25rem;
+    }
+}

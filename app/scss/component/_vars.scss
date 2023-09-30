@@ -1,0 +1,20 @@
+@import "./mixin";
+
+$defaulLinkColor: #000000;
+$footerBackground: #DDDDDD;
+
+%defaultFontText {
+    font-family: "Open Sans", sans-serif;
+    @include addaptive-value(font-size, 20, 16, 1);
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+%defultFontTitle {
+    font-family: "Roboto", sans-serif;
+    @include addaptive-value(font-size, 32, 26, 1);
+    font-style: normal;
+    font-weight: 700;
+    line-height: 138.889%;
+}

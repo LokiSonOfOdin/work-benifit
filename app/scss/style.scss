@@ -1,0 +1,32 @@
+@import "./component/vars";
+@import "./component/fonts";
+@import "./component/reset";
+@import "./component/libs";
+@import "./component/global";
+@import "./component/mixin";
+@import "./component/header";
+@import "./component/footer";
+@import "./component/work";
+@import "./component/swiper";
+
+.section__title {
+    @extend %defultFontTitle;
+}
+
+.link__whatsapp {
+    position: relative;
+    padding: .5rem 1rem;
+    margin-top: .5rem;
+    img {
+        max-width: 2.5rem;
+        position: absolute;
+        right: -0.9rem;
+        top: -0.9rem;
+        max-width: 2rem;
+    }
+}
+
+section {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}

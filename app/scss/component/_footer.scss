@@ -1,0 +1,19 @@
+.footer{
+    text-align: center;
+    background-color: $footerBackground;
+    &__title {
+        @include addaptive-value(font-size, 26, 22, 1);
+        margin-top: 1rem;
+    }
+    &__link {
+        @include addaptive-value(font-size, 20, 14, 1);
+        margin-top: .5rem;
+    }
+    &__social {
+        margin-top: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+}

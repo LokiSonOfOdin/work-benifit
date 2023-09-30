@@ -1,0 +1,33 @@
+.work {
+    &__menu {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+
+    &__menu-link {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: .5rem;
+    }
+    &__menu-img {
+        @include addaptive-value(width, 150, 80, 1)
+    }
+    &__card-title {
+        text-align: center;
+        margin-top: 2rem;
+    }
+    &__card-item {
+        margin-top: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        flex-wrap: wrap;
+    }
+}
