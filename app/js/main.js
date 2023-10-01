@@ -1,6 +1,5 @@
 const cards = Array.from(document.querySelectorAll(".gallery__card"));
 const picture = Array.from(document.querySelectorAll(".gallery__item"));
-
 const slider = document.querySelector(".gallery__slider");
 const sliderContainer = document.querySelector(".gallery__slider-container");
 const sliderBtnLeft = document.querySelector(".gallery__btn-left");
@@ -112,8 +111,6 @@ document.getElementById("my-modal").addEventListener('click', event => {
   event.currentTarget.classList.remove('open');
 });
 
-const TOKEN = "6313906554:AAEdJ_e4x-HKA4roahb1TGjMP84VJhOxfGI";
-const CHAT_ID = "-1001801938029";
 const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
 const formTg = document.getElementById('tg');
 const success = document.querySelector('.form__success')
