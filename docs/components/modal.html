@@ -1,0 +1,41 @@
+<section class="modal">
+  <div class="modal__box" id="modal-box">
+    <div class="modal__content">
+      <button class="modal__close-btn"><span class="material-symbols-outlined">
+        close
+        </span></button>
+      <h2 class="modal__title section__title">
+        Вы можете отправить заявку и мы обязательно перезвоним
+      </h2>
+      <form class="modal__form" id="modal-form">
+        <label class="modal__form-label">Имя</label><br />
+        <input
+          class="modal__form-input"
+          type="text"
+          name="name"
+          placeholder="Введите ваше имя"
+          required
+        />
+        <label class="modal__form-label">Телефон</label><br />
+        <input
+          class="modal__form-input"
+          type="tel"
+          name="tel"
+          placeholder="+7 (999) 999 99 99"
+          required
+        />
+        <label class="modal__form-label">Что вас интересует</label><br />
+        <input
+          class="modal__form-input"
+          type="text"
+          name="text"
+          placeholder="Что вас интересует"
+          required
+        />
+        
+        <button class="modal__form-btn" type="submit">Отправить</button>
+        <div class="modal__form-success">Сообщение отправлено</div>
+      </form>
+    </div>
+  </div>
+</section>

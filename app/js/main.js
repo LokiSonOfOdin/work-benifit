@@ -6,6 +6,15 @@ const sliderBtnLeft = document.querySelector(".gallery__btn-left");
 const sliderBtnRight = document.querySelector(".gallery__btn-right");
 const sliderBtnClose = document.querySelector(".gallery__slider-close");
 
+const modal = document.getElementById("modal-box");
+const closeModalBtn = document.querySelector(".modal__close-btn");
+const success = document.querySelector(".modal__form-success");
+
+const TOKEN = "1111";
+const CHAT_ID = "-123";
+const URI_API = `https://api.telegram.org/bot${TOKEN}/sendMessage`;
+const formModal = document.getElementById("modal-form");
+
 let cardIndex = -1;
 let pictureFull;
 let newPictureFull;
@@ -44,28 +53,86 @@ function changePicture(dir) {
     }
   }
   let newPictureFull = picture[cardIndex].cloneNode();
-  pictureFull.replaceWith(newPictureFull),
-  pictureFull = newPictureFull;
+  pictureFull.replaceWith(newPictureFull), (pictureFull = newPictureFull);
 }
 
 sliderBtnClose.addEventListener("click", (e) => {
   e.preventDefault();
   slider.classList.remove("active");
   pictureFull.remove();
-})
+});
 
-document.querySelector(".gallery__slider .gallery__slider-container").addEventListener('click', event => {
+document
+  .querySelector(".gallery__slider .gallery__slider-container")
+  .addEventListener("click", (event) => {
+    event._isClickWithInModal = true;
+  });
+document
+  .querySelector(".gallery__slider")
+  .addEventListener("click", (event) => {
+    if (event._isClickWithInModal) return;
+    event.currentTarget.classList.remove("active");
+  });
+
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    document.querySelector(".gallery__slider").classList.remove("active");
+  }
+});
+
+function openModal() {
+  modal.classList.add("open");
+}
+// Закрыть модальное окно
+closeModalBtn.addEventListener("click", function () {
+  modal.classList.remove("open");
+});
+
+// Закрыть модальное окно при нажатии на Esc
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    modal.classList.remove("open");
+  }
+});
+
+// Закрыть модальное окно при клике вне его
+document.querySelector(".modal__content").addEventListener("click", (event) => {
   event._isClickWithInModal = true;
 });
-document.querySelector(".gallery__slider").addEventListener('click', event => {
+document.getElementById("modal-box").addEventListener("click", (event) => {
   if (event._isClickWithInModal) return;
-  event.currentTarget.classList.remove('active');
+  event.currentTarget.classList.remove("open");
 });
 
-window.addEventListener('keydown', (e) => {
-  if (e.key === "Escape") {
-      document.querySelector(".gallery__slider").classList.remove("active")
-  }
+formModal.addEventListener("submit", function (e) {
+  e.preventDefault();
+  success.style.display = "block";
+  setTimeout(() => (success.style.display = "none"), 3000);
+
+  let message = `<b>Заявка с Сайта</b>\n`;
+  message += `<b>Имя отправителя: ${this.name.value}</b>\n`;
+  message += `<b>Телефон отправителя: ${this.tel.value}</b>\n`;
+  message += `<b>Что интересует: ${this.text.value}</b>`;
+
+  axios
+    .post(URI_API, {
+      chat_id: CHAT_ID,
+      parse_mode: "html",
+      text: message,
+    })
+    .then((res) => {
+      this.name.value = "";
+      this.tel.value = "";
+      this.text.value = "";
+      success.style.display = "block";
+      setTimeout(() => (success.style.display = "none"), 3000);
+    })
+    .catch((err) => {
+      console.warn(err);
+    })
+    .finally(() => {
+      console.log("end");
+    });
 });
 
 new Swiper(".swipers", {
@@ -82,63 +149,3 @@ new Swiper(".swipers", {
     prevEl: ".swiper-button-prev",
   },
 });
-
-
-const modal = document.getElementById("my-modal");
-const closePopup = document.getElementById("close-my-modal-btn");
-function openModal() {
-  modal.classList.add("open")
-}
-
-// Закрыть модальное окно
-closePopup.addEventListener("click", function() {
-  modal.classList.remove("open")
-})
-
-// Закрыть модальное окно при нажатии на Esc
-window.addEventListener('keydown', (e) => {
-  if (e.key === "Escape") {
-    modal.classList.remove("open")
-  }
-});
-
-// Закрыть модальное окно при клике вне его
-document.querySelector("#my-modal .modal__box").addEventListener('click', event => {
-  event._isClickWithInModal = true;
-});
-document.getElementById("my-modal").addEventListener('click', event => {
-  if (event._isClickWithInModal) return;
-  event.currentTarget.classList.remove('open');
-});
-
-const URI_API = `https://api.telegram.org/bot${ TOKEN }/sendMessage`;
-const formTg = document.getElementById('tg');
-const success = document.querySelector('.form__success')
-
-formTg.addEventListener('submit', function(e) {
-  e.preventDefault();
-  
-  let message = `<b>Заявка с Сайта</b>\n`;
-  message += `<b>Имя отправителя: ${ this.name.value }</b>\n`
-  message += `<b>Телефон отправителя: ${ this.tel.value }</b>\n`;
-  message += `<b>Что интересует: ${ this.text.value }</b>`;
-
-  axios.post(URI_API, {
-    chat_id: CHAT_ID,
-    parse_mode: 'html',
-    text: message
-  })
-  .then((res) => {
-    this.name.value = "";
-    this.tel.value = "";
-    this.text.value = "";
-    success.style.display = "block";
-    setTimeout(() => success.style.display = "none", 3000);
-  })
-  .catch((err) => {
-    console.warn(err);
-  })
-  .finally(() => {
-    console.log('end');
-  })
-})

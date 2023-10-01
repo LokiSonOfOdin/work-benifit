@@ -40,7 +40,12 @@ img {
   display: block;
 }
 
-input,
+input{
+  font: inherit;
+  background: transparent;
+  padding: 0;
+
+}
 button,
 textarea,
 select {

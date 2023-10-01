@@ -111,7 +111,7 @@
                     <li>копка шамбо под ключ</li>
                     <li>копка погреба и углубление</li>
                     <li>расчистка и планировка участков</li>
-                    <button class="work__card-btn">Заказать</button>
+                    <button class="work__card-btn" onclick="openModal()">Заказать</button>
                   </ol>
                 </div>
                 <h2 class="work__card-title" id="workcard-2">Разнорабочие</h2>
@@ -134,7 +134,7 @@
                   <ol class="work__card-ol">
                     <h4>Виды услуг</h4>
                     <li>Разнорабочие</li>
-                    <button class="work__card-btn">Заказать</button>
+                    <button class="work__card-btn" onclick="openModal()">Заказать</button>
                   </ol>
                 </div>
                 <h2 class="work__card-title" id="workcard-3">Демонтаж</h2>
@@ -157,7 +157,7 @@
                   <ol class="work__card-ol">
                     <h4>Виды услуг</h4>
                     <li>Демонтаж от малого объёма до здания!</li>
-                    <button class="work__card-btn">Заказать</button>
+                    <button class="work__card-btn" onclick="openModal()">Заказать</button>
                   </ol>
                 </div>
                 <h2 class="work__card-title" id="workcard-4">Грузоперевозки</h2>
@@ -180,7 +180,7 @@
                   <ol class="work__card-ol">
                     <h4>Виды услуг</h4>
                     <li>Грузчики, грузовые перевозки мебили.</li>
-                    <button class="work__card-btn">Заказать</button>
+                    <button class="work__card-btn" onclick="openModal()">Заказать</button>
                   </ol>
                 </div>
                 <h2 class="work__card-title" id="workcard-5">Уборка снега</h2>
@@ -203,7 +203,7 @@
                   <ol class="work__card-ol">
                     <h4>Виды услуг</h4>
                     <li>Уборка снега вручную территории и крыш любой сложности</li>
-                    <button class="work__card-btn">Заказать</button>
+                    <button class="work__card-btn" onclick="openModal()">Заказать</button>
                   </ol>
                 </div>
               </div>
@@ -339,6 +339,47 @@
 
       
     </div>
+          <section class="modal">
+            <div class="modal__box" id="modal-box">
+              <div class="modal__content">
+                <button class="modal__close-btn"><span class="material-symbols-outlined">
+                  close
+                  </span></button>
+                <h2 class="modal__title section__title">
+                  Вы можете отправить заявку и мы обязательно перезвоним
+                </h2>
+                <form class="modal__form" id="modal-form">
+                  <label class="modal__form-label">Имя</label><br />
+                  <input
+                    class="modal__form-input"
+                    type="text"
+                    name="name"
+                    placeholder="Введите ваше имя"
+                    required
+                  />
+                  <label class="modal__form-label">Телефон</label><br />
+                  <input
+                    class="modal__form-input"
+                    type="tel"
+                    name="tel"
+                    placeholder="+7 (999) 999 99 99"
+                    required
+                  />
+                  <label class="modal__form-label">Что вас интересует</label><br />
+                  <input
+                    class="modal__form-input"
+                    type="text"
+                    name="text"
+                    placeholder="Что вас интересует"
+                    required
+                  />
+                  
+                  <button class="modal__form-btn" type="submit">Отправить</button>
+                  <div class="modal__form-success">Сообщение отправлено</div>
+                </form>
+              </div>
+            </div>
+          </section>
           
 
   </body>
