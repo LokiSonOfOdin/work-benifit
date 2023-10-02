@@ -72,11 +72,13 @@ document
   .addEventListener("click", (event) => {
     if (event._isClickWithInModal) return;
     event.currentTarget.classList.remove("active");
+    pictureFull.remove();
   });
 
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     document.querySelector(".gallery__slider").classList.remove("active");
+    pictureFull.remove();
   }
 });
 
