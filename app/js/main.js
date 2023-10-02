@@ -7,6 +7,8 @@ const sliderBtnRight = document.querySelector(".gallery__btn-right");
 const sliderBtnClose = document.querySelector(".gallery__slider-close");
 
 const modal = document.getElementById("modal-box");
+const modalContent = document.querySelector(".modal__content");
+const openModalBtn = document.querySelectorAll(".work__card-btn");
 const closeModalBtn = document.querySelector(".modal__close-btn");
 const success = document.querySelector(".modal__form-success");
 
@@ -62,24 +64,25 @@ sliderBtnClose.addEventListener("click", (e) => {
   pictureFull.remove();
 });
 
-document
-  .querySelector(".gallery__slider .gallery__slider-container")
+document.querySelector(".gallery__slider .gallery__slider-container")
   .addEventListener("click", (event) => {
     event._isClickWithInModal = true;
   });
-document
-  .querySelector(".gallery__slider")
-  .addEventListener("click", (event) => {
+  slider.addEventListener("click", (event) => {
     if (event._isClickWithInModal) return;
     event.currentTarget.classList.remove("active");
     pictureFull.remove();
   });
 
 window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    document.querySelector(".gallery__slider").classList.remove("active");
+  if (e.key === "Escape" && slider.classList.contains("active")) {
+    slider.classList.remove("active");
     pictureFull.remove();
   }
+});
+
+openModalBtn.forEach(function (elem) {
+  elem.addEventListener("click", openModal);
 });
 
 function openModal() {
@@ -92,16 +95,16 @@ closeModalBtn.addEventListener("click", function () {
 
 // Закрыть модальное окно при нажатии на Esc
 window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
+  if (e.key === "Escape" && modal.classList.contains("open")) {
     modal.classList.remove("open");
   }
 });
 
 // Закрыть модальное окно при клике вне его
-document.querySelector(".modal__content").addEventListener("click", (event) => {
+modalContent.addEventListener("click", (event) => {
   event._isClickWithInModal = true;
 });
-document.getElementById("modal-box").addEventListener("click", (event) => {
+modal.addEventListener("click", (event) => {
   if (event._isClickWithInModal) return;
   event.currentTarget.classList.remove("open");
 });
